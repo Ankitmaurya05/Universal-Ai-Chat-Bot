@@ -7,30 +7,49 @@ export default function App() {
   const SITE_ID = "693d8cb1d389a058afe2f411";
 
   return (
-    <div className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center text-center px-4">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 animate-gradient bg-[length:400%_400%]" />
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <h1 className="text-xl font-semibold">Universal AI Chatbot</h1>
+          <button
+            onClick={() => setOpen(true)}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-500 transition"
+          >
+            Open Chat
+          </button>
+        </div>
+      </header>
 
-      {/* Floating Circles */}
-      <div className="absolute top-10 left-10 w-40 h-40 bg-white/20 rounded-full animate-bounce-slow" />
-      <div className="absolute bottom-20 right-20 w-60 h-60 bg-white/10 rounded-full animate-bounce-slow" />
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-6 py-20 text-center">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+          Smart Chat Assistance for Any Website
+        </h2>
 
-      {/* Headline */}
-      <h1 className="relative text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">
-        Chat with Your AI Friend 💖
-      </h1>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+          This AI chatbot can be embedded into any website to answer user
+          questions, provide support, and improve engagement automatically.
+        </p>
 
-      <p className="relative text-lg md:text-2xl text-white/90 mb-10 max-w-xl drop-shadow-md">
-        Ask questions, get friendly advice, jokes, or just have a fun conversation with your personal AI assistant!
-      </p>
+        <button
+          onClick={() => setOpen(true)}
+          className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-500 transition"
+        >
+          Start Chat
+        </button>
+      </main>
 
-      {/* Cool Chat Button */}
-      <button
-        onClick={() => setOpen(true)}
-        className="relative bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transform transition duration-300 hover:shadow-xl animate-bounce-slow text-xl"
-      >
-        💬 Start Chatting
-      </button>
+      {/* Floating Chat Button */}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-500 transition shadow-lg flex items-center justify-center text-white"
+          aria-label="Open chat"
+        >
+          💬
+        </button>
+      )}
 
       {/* Chat Widget */}
       {open && (
@@ -39,28 +58,6 @@ export default function App() {
           onClose={() => setOpen(false)}
         />
       )}
-
-      {/* Animations (Vite Safe) */}
-      <style>
-        {`
-          @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-          .animate-gradient {
-            animation: gradient 15s ease infinite;
-          }
-
-          @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-          }
-          .animate-bounce-slow {
-            animation: bounce-slow 6s ease-in-out infinite;
-          }
-        `}
-      </style>
     </div>
   );
 }
